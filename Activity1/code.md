@@ -1,143 +1,56 @@
-### 7\. Retail Billing with Multiple Discount Rules
+# Retail Billing Program
 
-### 1\. Problem Statement
+## 1. Problem Statement
 
-Develop a Python program to generate a retail bill for multiple products based on product price, quantity, category-specific taxes, threshold discounts, and maximum concession limits.
+Write a Python program to calculate the total bill for multiple products. The program should accept the price and quantity of each product, apply a 10% discount if the total is ₹2000 or more (with a maximum discount of ₹500), calculate 5% tax, and display the final bill.
 
-The program should:
+## 2. Algorithm
 
-* Accept multiple product names, prices, quantities, and categories.
+1. Start.
+2. Read the number of products.
+3. Initialize `total = 0`.
+4. Input the price and quantity of each product.
+5. Calculate the total amount by adding price × quantity for every product.
+6. If the total is ₹2000 or more, calculate a 10% discount; otherwise, set the discount to zero.
+7. Limit the discount to ₹500.
+8. Calculate tax as 5% of the total.
+9. Calculate the final bill as total − discount + tax.
+10. Display the total, discount, tax, and final bill.
+11. Stop.
 
-* Calculate the subtotal for each product.
+## 3. Flowchart 
+# Retail Billing with Multiple Discount Rules
+n = int(input("Enter number of products: "))
+total = 0
 
-* Apply category-specific taxes.
+for i in range(n):
+    price = float(input("Enter price: "))
+    qty = int(input("Enter quantity: "))
+    total += price * qty
 
-* Provide discounts based on purchase amount.
+discount = total * 0.10 if total >= 2000 else 0
+discount = min(discount, 500)
+tax = total * 0.05
+bill = total - discount + tax
 
-* Apply a maximum discount limit.
+print("Total:", total)
+print("Discount:", discount)
+print("Tax:", tax)
+print("Final Bill:", bill)
 
-* Calculate the final payable amount.
+## 5. Sample Input
 
-* Generate an itemized invoice displaying all details.
-
-### 2\. Algorithm
-
-* Start the program.
-
-* Read the number of products.
-
-* Enter product name, price, quantity, and category.
-
-* Calculate the subtotal of each product.
-
-* Calculate the total purchase amount.
-
-* Apply category-specific taxes.
-
-* Check discount eligibility based on purchase thresholds.
-
-* Calculate the discount amount.
-
-* Apply the maximum concession limit.
-
-* Calculate the final bill amount.
-
-* Display the itemized invoice.
-
-* Stop the program.
-
-### 3\. Flowchart
-flowchart TD
-    A([Start]) --> B[/Enter number of products/]
-    B --> C[/Enter product details/]
-    C --> D[Calculate product subtotal]
-    D --> E[Identify product category]
-    E --> F[Calculate category tax]
-    F --> G[Store product details]
-    G --> H{More products?}
-    H -- Yes --> C
-    H -- No --> I[Calculate total subtotal and tax]
-    I --> J{Check purchase threshold}
-    J --> K[Calculate discount]
-    K --> L{Discount exceeds maximum?}
-    L -- Yes --> M[Apply maximum discount]
-    L -- No --> N[Keep calculated discount]
-    M --> O[Calculate final bill]
-    N --> O
-    O --> P[/Display itemized invoice/]
-    P --> Q([Stop])
-### 5\. Sample Input
-
-```text
-===== RETAIL BILLING SYSTEM =====
-
-Enter number of products: 3
-
-Product 1
-Enter product name: Rice
-Enter product price: 100
-Enter quantity: 10
-Enter category (food/clothing/electronics): food
-
-Product 2
-Enter product name: Shirt
-Enter product price: 500
+Enter number of products: 2
+Enter price: 1000
 Enter quantity: 2
-Enter category (food/clothing/electronics): clothing
-
-Product 3
-Enter product name: Headphones
-Enter product price: 2000
+Enter price: 500
 Enter quantity: 1
-Enter category (food/clothing/electronics): electronics
-```
 
-### 6\. Sample Output
 
-```text
-========== ITEMIZED INVOICE ==========
+## 6. Sample Output
 
-Product   Qty   Price   Amount   Tax
 
-Rice       10    100     1000     5%
-Shirt       2    500     1000     5%
-Headphones  1   2000     2000    18%
-
---------------------------------------
-Subtotal: Rs. 4000.0
-Total Tax: Rs. 460.0
-Discount Rate: 15 %
-Discount Amount: Rs. 600.0
-Maximum Discount: Rs. 1000
---------------------------------------
-Final Amount: Rs. 3860.0
-======================================
-Thank You! Visit Again.
-```
-
-### 7\. Mermaid Flowchart Code
-
-```mermaid
-
-flowchart TD
-    A([Start]) --> B[/Enter number of products/]
-    B --> C[/Enter product details/]
-    C --> D[Calculate product subtotal]
-    D --> E[Identify product category]
-    E --> F[Calculate category tax]
-    F --> G[Store product details]
-    G --> H{More products?}
-    H -- Yes --> C
-    H -- No --> I[Calculate total subtotal and tax]
-    I --> J{Check purchase threshold}
-    J --> K[Calculate discount]
-    K --> L{Discount exceeds maximum?}
-    L -- Yes --> M[Apply maximum discount]
-    L -- No --> N[Keep calculated discount]
-    M --> O[Calculate final bill]
-    N --> O
-    O --> P[/Display itemized invoice/]
-    P --> Q([Stop])
-```
-
-Result: The Python program successfully processes multiple products, calculates category-specific taxes, applies threshold-based discounts and maximum concession limits, and generates an itemized retail invoice.
+Total: 2500.0
+Discount: 250.0
+Tax: 125.0
+Final Bill: 2375.0
