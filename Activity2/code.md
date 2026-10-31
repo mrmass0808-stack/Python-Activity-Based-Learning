@@ -17,16 +17,23 @@ Write a Python program to calculate an employee's gross salary, tax, provident f
 9. Stop.
 
 ## 3. Flowchart 
-basic = float(input("Enter basic salary: "))
-allow = float(input("Enter allowances: "))
-ot = float(input("Enter overtime: "))
-bonus = float(input("Enter incentives: "))
-gross = basic + allow + ot + bonus
-tax = gross * 0.05 if gross <= 20000 else gross * 0.10
-pf = basic * 0.12
-deduction = tax + pf
-net = gross - deduction
-print("Gross:", gross, "Deductions:", deduction, "Net Salary:", net)
+```mermaid
+flowchart TD
+    A([Start]) --> B[/Input salary details/]
+    B --> C[Calculate gross salary]
+    C --> D{Gross <= 20000?}
+    D -- Yes --> E[Tax = 5%]
+    D -- No --> F[Tax = 10%]
+    E --> G[Calculate PF, deductions and net salary]
+    F --> G
+    G --> H[/Display salary details/]
+    H --> I([Stop])
+```
+## 4. Source Code
+
+basic = float(input("Enter basic salary: "))allow = float(input("Enter allowances: "))ot = float(input("Enter overtime: "))bonus = float(input("Enter incentives: "))gross = basic + allow + ot + bonustax = gross * 0.05 if gross <= 20000 else gross * 0.10pf = basic * 0.12deduction = tax + pfnet = gross - deductionprint("Gross:", gross)print("Deductions:", deduction)print("Net Salary:", net)
+
+
 ## 5. Sample Input
 
 Enter basic salary: 15000
